@@ -1,22 +1,24 @@
-export async function handlePostSubmit(FormData: FormData) {
-  "use server";
-  let postTitle = FormData.get("form-title");
-  let postContent = FormData.get("post-form-content");
-  let post = { title: postTitle, content: postContent };
-  return post;
-  //TODO: Put post in database & retrieve
-}
+'use client'
 
-export default function postCreateForm() {
+import { useState } from "react";
+
+// export async function handlePostSubmit(FormData: FormData) {
+//   "use server";
+//   let postContent = FormData.get("post-form-content");
+//   let post = { id:'new_id', content: postContent };
+//   return post;
+//   //TODO: Put post in database & retrieve
+// }
+export default function postCreateForm(onFormClick: Function) {
   return (
     <div>
-      <form>
-        <input type="text" name="form-title" placeholder="Title" />
-        <input type="text" name="post-form-content" placeholder="Content" />
-        <button type="submit" formAction={handlePostSubmit}>
-          Create Post
+      <div className="flex justify-center items-center h-screen" >OMG</div>
+        <div className="flex justify-center p-2 border" >
+        <input type="text" name="post-form-content" placeholder="Start A thread..." className="px-3" onClick={onFormClick()}/>
+        <button type="submit" disabled className="px-3">
+          Post
         </button>
-      </form>
+      </div>
     </div>
   );
 }

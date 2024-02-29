@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,12 +21,19 @@ export default function RootLayout({
   postForm: React.ReactNode;
   auth: React.ReactNode;
 }>) {
+  const [showModal, setShowModal] = useState(false);
   return (
     <html lang="en">
       <body className={inter.className}>
         {navbar}
         {auth}
-        {postForm}
+        {showModal &&
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+            <div className="bg-white p-4">
+              {postForm}
+            </div>
+          </div>
+        }
         {children}
       </body>
     </html>
