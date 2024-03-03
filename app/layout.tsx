@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import CreatePostModal from "./@postForm/components/Modal";
+import CreatePostModal from "../components/Modal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,11 +15,13 @@ export default function RootLayout({
   navbar,
   postForm,
   auth,
+  posts
 }: Readonly<{
   children: React.ReactNode;
   navbar: React.ReactNode;
   postForm: React.ReactNode;
   auth: React.ReactNode;
+  posts: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -28,6 +30,7 @@ export default function RootLayout({
         {auth}
         <CreatePostModal />
         {postForm}
+        {posts}
         {children}
       </body>
     </html>
